@@ -1,0 +1,52 @@
+<body>
+<h1>Exemplo 3</h1>
+{{> nota}}
+</body>
+
+
+<template name="nota">  
+    <table class="table table-bordered">
+		<thead>
+    <tr>
+      <th>#</th>
+      <th>Título</th>
+      <th>Descrição</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+        {{#each item in nota}}
+		<tr>{{> notaItem nt=item ix=@index}}</tr>
+        {{/each}}
+		</tbody>
+	</table>
+<div class="panel">
+  <div class="col-md-3 panel-body">
+    <form id="nota-form" class="form-horizontal">
+		<div class="form-group">
+			<input type="text" class="form-control" name="title">
+		</div>
+		<div class="form-group">
+        	<textarea class="form-control" 
+               name="description"></textarea>
+		</div>
+		<div class="form-group">
+			<button type="submit" 
+                   class="btn btn-primary btn-lg">Submit</button>
+		</div>
+    </form>
+  </div>
+</div>
+</template>  
+
+
+<template name="notaItem">  
+<td>{{rownum ix}}</td>
+<td style="width: 20em">{{nt.title}}</td>
+<td>{{nt.description}}</td>
+<td><button class='btn btn-warning btn-sm' 
+    name="delete">remove</button></td>
+</template> 
+
+
+
